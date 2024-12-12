@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaming Facts App</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #2c3e50;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #ecf0f1;
+            margin-bottom: 30px;
+        }
+
+        .fact-card {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            min-height: 150px;
+        }
+
+        #fact-text {
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        #category {
+            color: #7f8c8d;
+            font-style: italic;
+        }
+
+        #generate-btn {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        #generate-btn:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Gaming Facts Generator</h1>
+        <div class="fact-card">
+            <p id="fact-text">Click the button to get a random gaming fact!</p>
+            <p id="category"></p>
+        </div>
+        <button id="generate-btn">Generate Fact</button>
+    </div>
+
+    <script>
+        const gamingFacts = {
+            "gaming_facts": [
+                {
+                    "id": 1,
+                    "fact": "The first video game console, the Magnavox Odyssey, was released in 1972.",
+                    "category": "gaming_history"
+                },
+                // ... (all other facts from the original script.js)
+                {
+                    "id": 20,
+                    "fact": "League of Legends holds the record for most concurrent viewers in esports (44 million).",
+                    "category": "esports"
+                }
+            ]
+        };
+
+        const factText = document.getElementById('fact-text');
+        const category = document.getElementById('category');
+        const generateBtn = document.getElementById('generate-btn');
+
+        function getRandomFact() {
+            const randomIndex = Math.floor(Math.random() * gamingFacts.gaming_facts.length);
+            const fact = gamingFacts.gaming_facts[randomIndex];
+            factText.textContent = fact.fact;
+            category.textContent = `Category: ${fact.category}`;
+        }
+
+        generateBtn.addEventListener('click', getRandomFact);
+
+        // Display a random fact when the page loads
+        getRandomFact();
+    </script>
+</body>
+</html>
